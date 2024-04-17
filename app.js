@@ -16,6 +16,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
+//Configure express to allow cross-origin requests.
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", process.env.CROSS_ORIGIN_ALLOWED_URL); // Set to your frontend origin
+    // res.header("Access-Control-Allow-Origin", "*"); // Allow all origins (not recommended)
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+
 //Setup the database context.
 const db = require("./database_context.js");
 db.initialize(process.env.DB_URL, process.env.DB_NAME);
