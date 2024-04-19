@@ -49,7 +49,7 @@ app.get("/api/projects/get-all", async (request, response) => {
 
 
 app.get("/api/skills/get-all", async (request, response) => {
-    const projects = await db.getProjects();
+    const projects = await db.getSkills();
 
 
     response.json({
