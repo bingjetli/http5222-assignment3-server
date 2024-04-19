@@ -48,6 +48,16 @@ app.get("/api/projects/get-all", async (request, response) => {
 });
 
 
+app.get("/api/skills/get-all", async (request, response) => {
+    const projects = await db.getProjects();
+
+
+    response.json({
+        content: projects,
+    });
+});
+
+
 //Start the server.
 app.listen(port, () => {
     console.log(`Server is now listening on port ${port}.`);
